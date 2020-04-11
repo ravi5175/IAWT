@@ -1,0 +1,105 @@
+.head{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: sans-serif;
+    
+    
+}
+.heading{
+    background-color: #004E64;
+    color: aliceblue;
+}
+.clg{
+    display: flex;
+    justify-content: center;
+    
+}
+.clg_name{
+    padding-left: 50px;
+    object-position: center;
+    padding-top: 25px;
+}
+.bdy{
+    padding:50px;
+    display: flex;
+    flex-direction: row;
+    
+}
+.b{
+    padding: 5px;
+    width:33%;
+
+}
+button{
+    width: 100%;
+}
+.imgprev{
+    display: block;
+}
+.output-image{
+}
+footer{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #004E64;
+    padding: 10px;
+    color: aliceblue;
+}
+
+/*
+.head{
+    flex-direction: column;
+}
+.column {
+    width:33.3%;
+    background-color: red;
+}
+.heading{
+    text-align: center;
+}
+.clg {
+    width:100%;
+}
+.upload {
+    height:30px;
+    width: 100%;
+}
+
+.row{
+}
+
+.iconDetails {
+ margin-left:2%;
+float:left; 
+height:40px;
+width:40px; 
+} 
+
+.container2 {
+    width:100%;
+    height:auto;
+    padding:1%;
+}
+
+form{
+  border: 4px dashed;
+}
+form p{
+  text-align: center;
+  line-height: 170px;
+  color: gray;
+  font-family: Arial;
+}
+form input{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 33.3%;
+    
+    background-color:black;
+  outline: none;
+  opacity: 0;
+}
+*/
