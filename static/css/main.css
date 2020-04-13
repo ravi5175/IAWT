@@ -22,37 +22,14 @@
 }
 .bdy{
     padding:50px;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-gap: 10px;
+    display: flex;
+    flex-direction: row;
     
 }
-.b1{
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-form{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-gap: 10px;
-}
-.a1{
-    grid-column-start: 1;
-    grid-column-end: 2;
-}   
-.a2{
-    grid-column-start: 2;
-    grid-column-end: 3;
-}   
-
 .b{
     padding: 5px;
     width:33%;
 
-}
-.bt{
-    display: flex;
-    flex-direction: row;
 }
 button{
     width: 100%;
@@ -70,10 +47,7 @@ footer{
     padding: 10px;
     color: aliceblue;
 }
-.progress.active .progress-bar {
-    -webkit-transition: none !important;
-    transition: none !important;
-}
+
 /*
 .head{
     flex-direction: column;

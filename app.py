@@ -17,12 +17,12 @@ app = Flask(__name__)
 """app configuration"""
 app.config["UPLOADED_PHOTOS_DEST"]=r"C:\Users\RAVI\Desktop\I.A.W.T\image\upload"
 app.config["WATERMARK_UPLOAD"]=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermark"
-app.config["WATERMARKED_UPLOAD"]=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermark"
+app.config["WATERMARKED_UPLOAD"]=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermarked"
 app.config["ALLOWED_IMAGE_EXTENSIONS"]=["PNG","JPG","JPEG","GIF"]
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+ret_wm=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermark"
 
 images=UploadSet("images",IMAGES)
-#configure_uploads(app,images)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -38,9 +38,8 @@ def home():
              img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
              return render_template("index.html")
          if 'decrypt' in request.form:
-             img.extract_lsb(os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
+             img.extract_lsb(os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),ret_wm,key)
              return render_template("index.html")
-         
          
          return redirect(request.url)
 

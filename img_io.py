@@ -41,7 +41,7 @@ def readLSB(image, width, binary, order):
         bit.append(cur)
     return bit
 
-def extract_lsb(inputpath, outputpath,key):
+def extract_lsb(inputpath, outputpath,key='qwerty'):
     cover = Image.open(inputpath)
     lsb = Image.new("1", cover.size);
     px_cover = cover.load()
@@ -52,7 +52,7 @@ def extract_lsb(inputpath, outputpath,key):
     key_size = len(key)
     for i in range(key_size):
         seed += ord(key[i])
-    cipher = readLSB(cover, cover.width, 0, key.shuffle_order(cover.width * cover.height, seed))
+    cipher = readLSB(cover, cover.width, 0, skey.shuffle_order(cover.width * cover.height, seed))
     plain = skey.decrypt(cipher, key)
 
     k = 0
@@ -63,7 +63,7 @@ def extract_lsb(inputpath, outputpath,key):
         j = pos % cover.width
         px_lsb[i, j] = ((plain[int(k / 8)] >> (k % 8)) & 1)
         k = (k + 1)
-    lsb.save(outputpath);
+    #lsb.save(outputpath);
     lsb.show();
 
 def insert_lsb(inputpath, watermarkpath, outputpath, key):
