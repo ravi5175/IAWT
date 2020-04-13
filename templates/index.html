@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Authentication</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+  <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+   
+
+</head>
+
+    
+<body>
+  
+<div class="head">
+    <div class="heading">
+        <h1>Image Authentication using Watermarking Technique</h1>
+    </div>
+
+    <div class="clg">
+        <div class="icon">
+         <img src="{{url_for('static', filename='logo.jpg')}}" height="100" width="100">
+                       <!-- <img src="logo.jpg" height="100" width="100">-->        
+
+        </div>
+        <div class="clg_name">
+            <h2><strong>G B Pant Government Engineering College</strong></h2>
+        </div>
+    </div>
+    
+</div>
+    
+    
+<div class="bdy">
+    <div class="b1">
+    <form id="form1" class="container" method="POST" enctype="multipart/form-data">
+
+    <div class="a1">
+    <div class="form-group">
+      <div class="custom-file">
+        <input type="file" name="image_file" class="custom-file-input" id="imageFile" accept="image/*">
+        
+<label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type='button' value="Upload Original Image" id="uploadImage" class="btn btn-block btn-dark"/>
+        <br>
+        <div class="col-xs-12 col-sm-12 progress-container">
+            <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-success" id="progressBar" style="width:0%"></div>
+            </div>
+        </div>
+    </div>
+        
+        
+        <div class="imgprev">
+                <img id="image_preview" class="img" width="100%"  src="{{url_for('static', filename='placeholder.png')}}" />
+                <!--<img id="image_preview" class="img" width="100%"  src=placeholder.png />-->
+            </div>
+    </div>
+    <div class="a2">
+        <div class="form-group">
+      <div class="custom-file">
+        <input type="file" name="watermark_file" class="custom-file-input" id="watermarkFile" accept="image/*">
+        
+<label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type='button' value="Upload Watermark Image" id="uploadWatermark" class="btn btn-block btn-dark"/>
+        <br>
+        <div class="col-xs-12 col-sm-12 progress-container">
+            <div class="progress progress-striped active">
+                <div id="pbw" class="progress-bar progress-bar-success" id="progressBar" style="width:0%"></div>
+            </div>
+        </div>
+
+    </div>
+      <div class="imgprev">
+                <img id="watermark_preview" class="img" width="100%"  src="{{url_for('static', filename='placeholder.png')}}" />
+              <!--<img id="watermark_preview" class="img" width="100%"  src=placeholder.png />-->
+
+            </div>
+
+        
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">#</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Input Key">
+            </div>
+            <div class='bt'>
+            <button class="btn btn-primary">Encrypt    
+            </button>
+            <button type="button" class="btn btn-secondary">Decrypt
+            </button>
+            </div>
+    </div>
+    </form>
+    </div>
+    <div class="b2">
+            <div class="imgprev">
+                <img class="img" width="100%" src="{{url_for('static', filename='outplaceholder.jpg')}}" />
+                <!--<img class="img" width="100%" src=outplaceholder.jpg />-->
+
+            </div>
+</div>
+</div>
+
+</body>
+<footer>
+  <p>Managed by: Sushmita</p>
+  <p>Contact information: <a href="mailto:17sushmita@gmail.com">
+  17sushmita@gmail.com</a>.</p>
+</footer>
+<script type='text/javascript'>
+
+$(document).ready(function() {
+  $('#imageFile').on("change", function() {
+    let filenames = [];
+    let files = document.getElementById("imageFile").files;
+    if (files.length > 1) {
+      filenames.push("Total Files (" + files.length + ")");
+    } else {
+      for (let i in files) {
+        if (files.hasOwnProperty(i)) {
+          filenames.push(files[i].name);
+        }
+      }
+    }
+    $(this)
+      .next(".custom-file-label")
+      .html(filenames.join(","));
+      
+      var reader = new FileReader();
+  reader.onload = function(e) {
+    // get loaded data and render thumbnail.
+    document.getElementById("image_preview").src = e.target.result;
+  };
+  // read the image file as a data URL.
+  reader.readAsDataURL(this.files[0]);
+      $('#uploadImage').click(function(){
+      //alert("yoooo");
+          $("#progressBar").animate({
+            width: "100%"
+          }, 350);
+          $('#progressBar').text('Uploaded');
+          
+      
+      });
+      
+  });
+    
+    
+    
+  $('#watermarkFile').on("change", function() {
+    let filenames = [];
+    let files = document.getElementById("watermarkFile").files;
+    if (files.length > 1) {
+      filenames.push("Total Files (" + files.length + ")");
+    } else {
+      for (let i in files) {
+        if (files.hasOwnProperty(i)) {
+          filenames.push(files[i].name);
+        }
+      }
+    }
+    $(this)
+      .next(".custom-file-label")
+      .html(filenames.join(","));
+      
+      var reader = new FileReader();
+  reader.onload = function(e) {
+    // get loaded data and render thumbnail.
+    document.getElementById("watermark_preview").src = e.target.result;
+  };
+  // read the image file as a data URL.
+  reader.readAsDataURL(this.files[0]);
+      $('#uploadWatermark').click(function(){
+      //alert("yoooo");
+          $("#pbw").animate({
+            width: "100%"
+          }, 350);
+          $('#pbw').text('Uploaded');
+          
+      
+      });
+      
+  });
+  
+    
+    
+});
+    
+</script>
+</html>
