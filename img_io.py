@@ -93,7 +93,8 @@ def insert_lsb(inputpath, watermarkpath, outputpath, key):
         k = (k + 1) % mod
         px_output[i, j] = tuple(p)
     output.save(outputpath)
-    output.show()    
+    output.show()
+    return output    
 
 
 def psnr(watermarkedcover, plaincover):

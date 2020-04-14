@@ -8,6 +8,7 @@ Section-Main
 
 from flask import Flask,render_template,request,url_for,redirect,flash
 from flask_uploads import UploadSet,IMAGES
+import matplotlib.pyplot as plt
 import os
 import img_io as img
 import key_io
@@ -29,23 +30,10 @@ images=UploadSet("images",IMAGES)
 @app.route("/", methods=["GET", "POST"])
 def home():
    if request.method == "POST":
-      if request.files:
-         image = request.files["image_file"]
-         watermark=None
-         watermark=request.files["watermark_file"]
-         image.save(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename))
-         watermark.save(os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename))
-         key=request.form.get("key")
          if 'encrypt' in request.form:
-             img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
-             return render_template("index.html")
+             return redirect(url_for("encryptor"))
          if 'decrypt' in request.form:
-             img.extract_lsb(os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),ret_wm,key)
-             return render_template("index.html")
-         
-
-
-
+             return redirect(url_for("decryptor"))
    return render_template("index.html")
 
 @app.route("/encryptor", methods=["GET", "POST"])
@@ -58,9 +46,10 @@ def encryptor():
          image.save(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename))
          watermark.save(os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename))
          key=request.form.get("key")
+         imgname=image.filename
          if 'encrypt' in request.form:
-             img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
-             return render_template("encryption.html")
+             image=img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
+             return redirect(url_for("encryption_output",img=imgname))
          
     return render_template("encryption.html")
 
@@ -77,9 +66,11 @@ def decryptor():
              return render_template("decryption.html")
     return render_template("decryption.html")
 
-@app.route("/encryption_output", methods=["GET", "POST"])
-def encryption_output():
-    pass
+@app.route("/encryption_output/<img>", methods=["GET", "POST"])
+def encryption_output(img):
+    #img=os.path.join(app.config["WATERMARKED_UPLOAD"],img)
+    img=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermarked"+img
+    return render_template("encryption_output.html",image=img)
 
 @app.route("/decryption_output", methods=["GET", "POST"])
 def decryption_output():
