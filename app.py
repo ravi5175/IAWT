@@ -25,11 +25,13 @@ ret_wm=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermark"
 images=UploadSet("images",IMAGES)
 
 
+
 @app.route("/", methods=["GET", "POST"])
 def home():
    if request.method == "POST":
       if request.files:
          image = request.files["image_file"]
+         watermark=None
          watermark=request.files["watermark_file"]
          image.save(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename))
          watermark.save(os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename))
@@ -41,10 +43,47 @@ def home():
              img.extract_lsb(os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),ret_wm,key)
              return render_template("index.html")
          
-         return redirect(request.url)
+
 
 
    return render_template("index.html")
+
+@app.route("/encryptor", methods=["GET", "POST"])
+def encryptor():
+    if request.method == "POST":
+      if request.files:
+         image = request.files["image_file"]
+         watermark=None
+         watermark=request.files["watermark_file"]
+         image.save(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename))
+         watermark.save(os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename))
+         key=request.form.get("key")
+         if 'encrypt' in request.form:
+             img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
+             return render_template("encryption.html")
+         
+    return render_template("encryption.html")
+
+
+@app.route("/decryptor", methods=["GET", "POST"])
+def decryptor():
+    if request.method == "POST":
+      if request.files:
+         image = request.files["image_file"]
+         image.save(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename))
+         key=request.form.get("key")
+         if 'decrypt' in request.form:
+             img.extract_lsb(os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),ret_wm,key)
+             return render_template("decryption.html")
+    return render_template("decryption.html")
+
+@app.route("/encryption_output", methods=["GET", "POST"])
+def encryption_output():
+    pass
+
+@app.route("/decryption_output", methods=["GET", "POST"])
+def decryption_output():
+    pass
 
 
 
