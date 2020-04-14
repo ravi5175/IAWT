@@ -1,3 +1,15 @@
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
+}
+.content {
+  flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+}
+
 .head{
     display: flex;
     flex-direction: column;
@@ -24,17 +36,43 @@
     padding:50px;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-gap: 10px;
+    grid-gap: 10px;    
     
+}
+.bdy1{
+    padding:50px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;    
+
+}
+.bdy2{
+    text-align:center;
+display:block;
+    width:30%;
+    height: auto;
+
+}
+.center{
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 .b1{
     grid-column-start: 1;
     grid-column-end: 3;
 }
-form{
+#form1{
+    /**
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-gap: 10px;
+    grid-template-columns: 50;
+    grid-gap: 10px;**/
+    vertical-align: middle;   
+
+}
+.btn1{
+    vertical-align: middle;
 }
 .a1{
     grid-column-start: 1;
@@ -50,10 +88,7 @@ form{
     width:33%;
 
 }
-.bt{
-    display: flex;
-    flex-direction: row;
-}
+
 button{
     width: 100%;
 }
@@ -63,12 +98,14 @@ button{
 .output-image{
 }
 footer{
+    
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #004E64;
     padding: 10px;
     color: aliceblue;
+    flex-shrink: 0;
 }
 .progress.active .progress-bar {
     -webkit-transition: none !important;
