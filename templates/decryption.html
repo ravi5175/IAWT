@@ -17,31 +17,31 @@
 
 <body>
     <div class="content">
-    <div class="head">
-        <div class="heading">
-            <h1>Image Authentication using Watermarking Technique</h1>
+        <div class="head">
+            <div class="heading">
+                <h1>Image Authentication using Watermarking Technique</h1>
+            </div>
+
+            <div class="clg">
+                <div class="icon">
+                    <img src="{{url_for('static', filename='logo.jpg')}}" height="100" width="100">-->
+                    <!--<img src="logo.jpg" height="100" width="100">-->
+
+                </div>
+                <div class="clg_name">
+                    <h2><strong>G B Pant Government Engineering College</strong></h2>
+                </div>
+            </div>
+
         </div>
 
-        <div class="clg">
-            <div class="icon">
-                <img src="{{url_for('static', filename='logo.jpg')}}" height="100" width="100">-->
-                <!--<img src="logo.jpg" height="100" width="100">-->
 
-            </div>
-            <div class="clg_name">
-                <h2><strong>G B Pant Government Engineering College</strong></h2>
-            </div>
-        </div>
-
-    </div>
-
-    
-    <form class="container" method="POST" enctype="multipart/form-data">
-          <div class="bdy1">      
-              <div class="a1">
+        <form class="container" method="POST" enctype="multipart/form-data">
+            <div class="bdy1">
+                <div class="a1">
                     <div class="form-group">
                         <div class="custom-file">
-                            <input type="file" name="output_file" class="custom-file-input" id="outputFile" accept="image/*">
+                            <input type="file" name="watermarked_file" class="custom-file-input" id="outputFile" accept="image/*">
 
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
@@ -63,7 +63,7 @@
                     </div>
 
 
-                    
+
                 </div>
                 <div class="a3">
                     <div class="input-group mb-3">
@@ -74,22 +74,22 @@
                     </div>
                     <div class="btn1">
                         <button class="btn btn-danger" name="decrypt" value="decrypt">Decrypt</button>
-                        
-                        
-                        
+
+
+
                     </div>
                 </div>
-        </div>
-                    
-            </form>
-    
+            </div>
+
+        </form>
+
     </div>
     <footer>
-    <p>Managed by: Sushmita</p>
-    <p>Contact information: <a href="mailto:17sushmita@gmail.com">
+        <p>Managed by: Sushmita</p>
+        <p>Contact information: <a href="mailto:17sushmita@gmail.com">
   17sushmita@gmail.com</a>.</p>
-</footer>
-    
+    </footer>
+
 
 </body>
 <script type='text/javascript'>

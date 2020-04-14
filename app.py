@@ -58,7 +58,7 @@ def encryptor():
 def decryptor():
     if request.method == "POST":
       if request.files:
-         image = request.files["image_file"]
+         image = request.files["watermarked_file"]
          image.save(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename))
          key=request.form.get("key")
          if 'decrypt' in request.form:
