@@ -69,7 +69,7 @@ def decryptor():
 @app.route("/encryption_output/<img>", methods=["GET", "POST"])
 def encryption_output(img):
     #img=os.path.join(app.config["WATERMARKED_UPLOAD"],img)
-    img=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermarked"+img
+    #img=os.path.join(app.config["WATERMARKED_UPLOAD"],img)
     return render_template("encryption_output.html",image=img)
 
 @app.route("/decryption_output", methods=["GET", "POST"])

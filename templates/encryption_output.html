@@ -42,20 +42,19 @@
         <div class="bdy1">
             <div class="a1">
                 <div class="imgprev">
-                    <img id="output_preview" class="img" width="100%" src="{{image}}" />
-                    <!--<img id="output_preview" class="img" width="100%"  src=outplaceholder.jpg />-->
+                    <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" " /> {{image}}
 
                 </div>
 
 
 
             </div>
-            <div class="a3">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">PSNR Value</span>
+            <div class="a3 ">
+                <div class="input-group mb-3 ">
+                    <div class="input-group-prepend ">
+                        <span class="input-group-text ">PSNR Value</span>
                     </div>
-                    <label type="text" value={{image}} name="key" class="form-control" placeholder="Input Key" />
+                    <label type="text " value={{image}} name="key " class="form-control " placeholder="Input Key " />
                 </div>
             </div>
         </div>
@@ -63,7 +62,7 @@
     </div>
     <footer>
         <p>Managed by: Sushmita</p>
-        <p>Contact information: <a href="mailto:17sushmita@gmail.com">
+        <p>Contact information: <a href="mailto:17sushmita@gmail.com ">
   17sushmita@gmail.com</a>.</p>
     </footer>
 
