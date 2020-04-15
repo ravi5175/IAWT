@@ -40,3 +40,16 @@ def decrypt(cipher, key):
     for i in range(len_cipher):
         plain.append((cipher[i] + 256 - ord(key[i % len_key])) % 256)
     return plain
+
+
+def rms(image_a,image_b):
+    px_a = image_a.load()
+    px_b = image_b.load()
+    sum=0;
+    for i in range(image_a.width):
+        for j in range(image_a.height):
+            p_a = px_a[i,j]
+            p_b = px_b[i,j]
+            sum += math.pow((p_a[0] - p_b[0]), 2) + math.pow((p_a[1] - p_b[1]), 2) + math.pow((p_a[2] - p_b[2]), 2)
+
+    return math.sqrt(sum / (image_a.width * image_a.height) / 3)

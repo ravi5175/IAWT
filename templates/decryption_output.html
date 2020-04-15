@@ -36,7 +36,7 @@
             </div>
 
         </div>
-        <img id="output_preview" class="img" width="100%" src="{{url_for('static', filename='placeholder.png')}}" />
+        <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" alt="watermark_image" />
         <!--<img class="center" src=outplaceholder.jpg />-->
 
     </div>
