@@ -64,7 +64,7 @@ def decryptor():
          key=request.form.get("key")
          imgname=image.filename
          if 'decrypt' in request.form:
-             img.extract_lsb(os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),ret_wm,key)
+             img.extract_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),ret_wm,key)
              #return redirect(url_for("decryption_output",img=imgname))
     return render_template("decryption.html")
 
