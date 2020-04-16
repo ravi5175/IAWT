@@ -36,8 +36,19 @@
             </div>
 
         </div>
-        <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" alt="watermark_image" />
-        <!--<img class="center" src=outplaceholder.jpg />-->
+        <center>
+            <div class="bdy2">
+                <div class="a1">
+                    <div class="imgprev">
+                        <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermark', image]))}}" />
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </center>
 
     </div>
     <footer>

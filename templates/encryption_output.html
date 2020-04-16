@@ -31,7 +31,7 @@
 
 
                 </div>
-                <div class="clg_name">
+                <div class="clg_name">ot
                     <h2><strong>G B Pant Government Engineering College</strong></h2>
                 </div>
             </div>
@@ -39,28 +39,28 @@
         </div>
 
         <center>
-        <div class="bdy2">
-            <div class="a1">
-                <div class="imgprev">
-                    <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}"  />
-                    
+            <div class="bdy2">
+                <div class="a1">
+                    <div class="imgprev">
+                        <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" />
+
+                    </div>
+
+
+
                 </div>
-
-
-
-            </div>
-            <div class="a3 ">
-                <div class="input-group mb-3 ">
-                    <div class="input-group-prepend ">
-                        <span class="input-group-text ">PSNR Value</span>
+                <div class="a3 ">
+                    <div class="input-group mb-3 ">
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text ">PSNR Value</span>
+                        </div>
+                        <input type="text " value={{psnr}} name="key " class="form-control " placeholder="Input Key " />
                     </div>
-                    <input type="text " value={{psnr}} name="key " class="form-control " placeholder="Input Key "  />
-                    </div>
-                <a href="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" download="{{image}}">
-                    <button width=100% class="btn btn-success  btn-block">Download</button>
-                </a>
+                    <a href="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" download="{{image}}">
+                        <button width=100% class="btn btn-success  btn-block">Download</button>
+                    </a>
+                </div>
             </div>
-        </div>
         </center>
 
     </div>

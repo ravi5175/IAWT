@@ -48,7 +48,7 @@ def encryptor():
          key=request.form.get("key")
          imgname=image.filename
          if 'encrypt' in request.form:
-             image=img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
+             image=img.insert_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], imgname),os.path.join(app.config["WATERMARK_UPLOAD"], watermark.filename),os.path.join(app.config["WATERMARKED_UPLOAD"], image.filename),key)
              psnr=img.print_psnr(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], imgname), os.path.join(app.config["WATERMARKED_UPLOAD"], imgname))
              return redirect(url_for("encryption_output",img=imgname,psnr=psnr))
          
@@ -64,8 +64,8 @@ def decryptor():
          key=request.form.get("key")
          imgname=image.filename
          if 'decrypt' in request.form:
-             img.extract_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], image.filename),ret_wm,key)
-             #return redirect(url_for("decryption_output",img=imgname))
+             img.extract_lsb(os.path.join(app.config["UPLOADED_PHOTOS_DEST"], imgname),os.path.join(ret_wm,imgname),key)
+             return redirect(url_for("decryption_output",img=imgname))
     return render_template("decryption.html")
 
 @app.route("/encryption_output/<img>/<psnr>", methods=["GET", "POST"])

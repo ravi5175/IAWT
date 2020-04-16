@@ -63,7 +63,7 @@ def extract_lsb(inputpath, outputpath,key='qwerty'):
         j = pos % cover.width
         px_lsb[i, j] = ((plain[int(k / 8)] >> (k % 8)) & 1)
         k = (k + 1)
-    #lsb.save(outputpath);
+    lsb.save(outputpath);
     lsb.show();
     
 
