@@ -65,6 +65,7 @@ def extract_lsb(inputpath, outputpath,key='qwerty'):
         k = (k + 1)
     #lsb.save(outputpath);
     lsb.show();
+    
 
 def insert_lsb(inputpath, watermarkpath, outputpath, key):
     cover = Image.open(inputpath)
@@ -105,4 +106,4 @@ def print_psnr(watermarkedpath, plainpath):
     watermarked = Image.open(watermarkedpath)
     plain = Image.open(plainpath)
 
-    print("PSNR: " + str(psnr(watermarked, plain)))     
+    return str(psnr(watermarked, plain))     
