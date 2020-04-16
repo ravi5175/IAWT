@@ -39,6 +39,22 @@ body {
     grid-gap: 10px;    
     
 }
+.bdy3{
+    padding:50px;
+    display: grid;
+    grid-template-columns: 10% 70% 10% 10%;
+    grid-gap: 10px;    
+
+}
+.s1{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.s2{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
 .bdy1{
     padding:50px;
     display: grid;
