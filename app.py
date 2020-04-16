@@ -16,12 +16,12 @@ import key_io
 app = Flask(__name__)
 
 """app configuration"""
-app.config["UPLOADED_PHOTOS_DEST"]=r"C:\Users\RAVI\Desktop\I.A.W.T\static\image\upload"
-app.config["WATERMARK_UPLOAD"]=r"C:\Users\RAVI\Desktop\I.A.W.T\static\image\watermark"
-app.config["WATERMARKED_UPLOAD"]=r"C:\Users\RAVI\Desktop\I.A.W.T\static\image\watermarked"
+app.config["UPLOADED_PHOTOS_DEST"]=os.path.join('static','image','upload')
+app.config["WATERMARK_UPLOAD"]=os.path.join('static','image','watermark')
+app.config["WATERMARKED_UPLOAD"]=os.path.join('static','image','watermarked')
 app.config["ALLOWED_IMAGE_EXTENSIONS"]=["PNG","JPG","JPEG","GIF"]
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
-ret_wm=r"C:\Users\RAVI\Desktop\I.A.W.T\image\watermark"
+ret_wm=os.path.join('static','image','watermark')
 
 images=UploadSet("images",IMAGES)
 
