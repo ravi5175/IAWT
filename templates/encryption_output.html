@@ -38,12 +38,12 @@
 
         </div>
 
-
-        <div class="bdy1">
+        <center>
+        <div class="bdy2">
             <div class="a1">
                 <div class="imgprev">
-                    <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" " /> {{image}}
-
+                    <img id="output_preview" class="img" width="100%" srcset="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}"  />
+                    
                 </div>
 
 
@@ -55,9 +55,13 @@
                         <span class="input-group-text ">PSNR Value</span>
                     </div>
                     <input type="text " value={{psnr}} name="key " class="form-control " placeholder="Input Key "  />
-                </div>
+                    </div>
+                <a href="{{url_for( 'static', filename='/'.join(['image', 'watermarked', image]))}}" download="{{image}}">
+                    <button width=100% class="btn btn-success  btn-block">Download</button>
+                </a>
             </div>
         </div>
+        </center>
 
     </div>
     <footer>
