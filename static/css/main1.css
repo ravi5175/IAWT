@@ -43,17 +43,23 @@ body {
     padding:50px;
     display: grid;
     grid-template-columns: 10% 70% 10% 10%;
+    grid-template-rows: 100%;
     grid-gap: 10px;    
+    align-items: center;
 
 }
 .s1{
     grid-column-start: 2;
     grid-column-end: 3;
+    font-size: 20px;
 }
+
 .s2{
     grid-column-start: 3;
     grid-column-end: 4;
+    align-items: center;
 }
+
 
 .bdy1{
     padding:50px;
@@ -78,17 +84,6 @@ display:block;
 .b1{
     grid-column-start: 1;
     grid-column-end: 3;
-}
-#form1{
-    /**
-    display: grid;
-    grid-template-columns: 50;
-    grid-gap: 10px;**/
-    vertical-align: middle;   
-
-}
-.btn1{
-    vertical-align: middle;
 }
 .a1{
     grid-column-start: 1;
